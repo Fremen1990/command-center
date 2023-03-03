@@ -1,25 +1,25 @@
-name: Nx Affected CI
+name: CI
+
+env:
+  NODE_OPTIONS: --max-old-space-size=6144
+
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [main]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: git fetch origin main
-      - run: npm install
-      - name: Run Affected Tests
-        shell: bash
-        run: npm run affected:test -- --base=remotes/origin/master
+    branches:
+      - master
+  pull_request: {}
+
+  jobs:
+    builds:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16
+            cache: npm
+        - run: npm ci
+        - run: npm run build
+        - run: npm run test
+        - run: npm run lint
+        - run: npm run e2e
