@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "nx serve front",
     "lint": "nx lint front",
-    "format": "nx format:write front",
-    "format:check": "nx format:check front",
+    "format": "prettier --write apps/front/**/*.{js,jsx,ts,tsx,md,json}",
+    "format:check": "prettier --check apps/front/**/*.{js,jsx,ts,tsx,md,json}",
     "test": "nx test front",
     "test:watch": "nx test front --watch",
     "test:coverage": "nx test front --coverage",
