@@ -9,7 +9,7 @@
     "format:check": "nx format:check front",
     "test": "nx test front",
     "test:watch": "nx test front --watch",
-    "test:coverage": "nx test front --code-coverage",
+    "test:coverage": "nx test front --coverage",
     "e2e": "nx e2e front-e2e",
     "e2e:watch": "nx e2e front-e2e --watch",
     "affected:apps": "nx affected:apps",
