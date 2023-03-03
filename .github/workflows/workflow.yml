@@ -1,14 +1,30 @@
----
-- name: Checkout
-  on:
+name: Checkout
+
+on:
     push:
         branches:
             - main
+            - develop
+            - feature/*
+    pull_request:
+        branches:
+            - main
+            - develop
+            - feature/*
 
-  uses: actions/checkout@v3
-  with:
-    fetch-depth: 0
 
-- uses: mansagroup/nrwl-nx-action@v3
-  with:
-    targets: lint,build,deploy
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Run a one-line script
+          run: echo Hello World GitHub Actions!
+
+#  uses: actions/checkout@v3
+#  with:
+#    fetch-depth: 0
+#
+#- uses: mansagroup/nrwl-nx-action@v3
+#  with:
+#    targets: lint,build,deploy
