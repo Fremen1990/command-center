@@ -12,7 +12,17 @@ on:
           - develop
           - feature/*
 
+jobs:
+    format:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                fetch-depth: 0
+            - uses: nrwl/nx-set-shas@v3
+            - run: npm ci
 
-uses: mansagroup/nrwl-nx-action@v3
-with:
-    targets: lint,build,deploy
+            - run: npx nx format:check
+            - run: npx nx affected --target=lint --parallel=3
+            - run: npx nx affected --target=test --parallel=3 --configuration=ci
+            - run: npx nx affected --target=build --parallel=3
