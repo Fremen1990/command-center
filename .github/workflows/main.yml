@@ -10,9 +10,15 @@ on:
       - master
       - develop
       - feature/*
+
 jobs:
   main:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [ 14.16.0 ]
+
     steps:
       - uses: actions/checkout@v2
         with:
