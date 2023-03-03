@@ -1,10 +1,25 @@
----
-- name: Checkout
-  uses: actions/checkout@v3
-  with:
-    fetch-depth: 0
-
-- uses: mansagroup/nrwl-nx-action@v3
-  with:
-    targets: lint,build,deploy
-    affected: false
+name: Nx Affected CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: git fetch origin main
+      - run: npm install
+      - name: Run Affected Tests
+        shell: bash
+        run: npm run affected:test -- --base=remotes/origin/master
