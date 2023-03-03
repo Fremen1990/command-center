@@ -1,4 +1,4 @@
-name: Checkout
+name: CI test
 
 on:
     push:
