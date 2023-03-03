@@ -1,27 +1,12 @@
-name: CI
-on:
-  push:
-    branches:
-      - master
-      - develop
-      - feature/*
-
-jobs:
-  main:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        node-version: [ 14.16.0 ]
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: nrwl/nx-set-shas@v3
-      - run: npm ci
-
-      - run: npx nx format:check
-      - run: npx nx affected --target=lint --parallel=3
-      - run: npx nx affected --target=test --parallel=3 --configuration=ci
-      - run: npx nx affected --target=build --parallel=3
+- name: Nrwl Nx - plugin
+  uses: MansaGroup/nrwl-nx-action@v3.2.2
+  with:
+    targets: lint,test,build
+    all: 'true'
+#  with:
+#    targets: build
+#    projects: frontend,backend
+#    all: 'true'
+#  with:
+#    targets: build
+#    nxCloud: 'true'
