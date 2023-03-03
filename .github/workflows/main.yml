@@ -1,30 +1,9 @@
+---
 - name: Checkout
   uses: actions/checkout@v3
   with:
     fetch-depth: 0
 
-- name: Nrwl Nx
-  uses: MansaGroup/nrwl-nx-action@v3.2.2
+- uses: mansagroup/nrwl-nx-action@v3
   with:
-      targets: lint,test,build
-      all: 'true'
-
-#- uses: mansagroup/nrwl-nx-action@v3
-#  with:
-#    targets: lint,build,deploy
-
-
-
-#- name: Nrwl Nx - plugin
-#  uses: MansaGroup/nrwl-nx-action@v3.2.2
-#  with:
-#    targets: lint,test,build
-#    all: 'true'
-
-#  with:
-#    targets: build
-#    projects: frontend,backend
-#    all: 'true'
-#  with:
-#    targets: build
-#    nxCloud: 'true'
+    targets: lint,build,deploy
