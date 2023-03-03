@@ -1,17 +1,18 @@
-name: CI
+name: CI test
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-      - feature/*
-  pull_request:
-    branches:
-      - main
-      - develop
-      - feature/*
+    push:
+        branches:
+            - main
+            - develop
+            - feature/*
+    pull_request:
+        branches:
+          - main
+          - develop
+          - feature/*
 
-  uses: mansagroup/nrwl-nx-action@v3
-  with:
+
+uses: mansagroup/nrwl-nx-action@v3
+with:
     targets: lint,build,deploy
