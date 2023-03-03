@@ -1,12 +1,12 @@
 name: CI
 on:
   push:
-#    branches:
-#      - master
+    branches:
+      - master
 #  pull_request:
 
 jobs:
-  #  master:
+  master:
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v2
