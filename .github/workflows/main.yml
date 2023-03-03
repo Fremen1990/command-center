@@ -3,10 +3,12 @@ name: CI
 env:
   NODE_OPTIONS: --max-old-space-size=6144
 
-on:
-  push:
-    branches:
-      - main
+#on: workflow_dispatch
+
+#on:
+#  push:
+#    branches:
+#      - main
 
   jobs:
     builds:
