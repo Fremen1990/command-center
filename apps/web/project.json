@@ -1,7 +1,7 @@
 {
-  "name": "front",
+  "name": "web",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/front/src",
+  "sourceRoot": "apps/web/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,16 +10,16 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/front",
-        "index": "apps/front/src/index.html",
+        "outputPath": "dist/apps/web",
+        "index": "apps/web/src/index.html",
         "baseHref": "/",
-        "main": "apps/front/src/main.tsx",
-        "tsConfig": "apps/front/tsconfig.app.json",
-        "assets": ["apps/front/src/favicon.ico", "apps/front/src/assets"],
+        "main": "apps/web/src/main.tsx",
+        "tsConfig": "apps/web/tsconfig.app.json",
+        "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
         "styles": [],
         "scripts": [],
         "isolatedConfig": true,
-        "webpackConfig": "apps/front/webpack.config.js"
+        "webpackConfig": "apps/web/webpack.config.js"
       },
       "configurations": {
         "development": {
@@ -31,8 +31,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/front/src/environments/environment.ts",
-              "with": "apps/front/src/environments/environment.prod.ts"
+              "replace": "apps/web/src/environments/environment.ts",
+              "with": "apps/web/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -48,40 +48,39 @@
       "executor": "@nrwl/webpack:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "front:build",
-        "port": 3000,
+        "buildTarget": "web:build",
         "hmr": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "front:build:development"
+          "buildTarget": "web:build:development"
         },
         "production": {
-          "buildTarget": "front:build:production",
+          "buildTarget": "web:build:production",
           "hmr": false
         }
       }
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/apps/front"],
+      "outputs": ["coverage/apps/web"],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/apps/front"
+        "reportsDirectory": "../../coverage/apps/web"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "storybook": {
       "executor": "@nrwl/storybook:storybook",
       "options": {
         "port": 4400,
-        "configDir": "apps/front/.storybook"
+        "configDir": "apps/web/.storybook"
       },
       "configurations": {
         "ci": {
@@ -93,8 +92,8 @@
       "executor": "@nrwl/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/front",
-        "configDir": "apps/front/.storybook"
+        "outputDir": "dist/storybook/web",
+        "configDir": "apps/web/.storybook"
       },
       "configurations": {
         "ci": {
