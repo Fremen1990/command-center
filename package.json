@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nx serve front",
+    "dev": "nx serve front --open",
     "lint": "nx lint front",
     "format": "prettier --write apps/front/**/*.{js,jsx,ts,tsx,md,json}",
     "format:check": "prettier --check apps/front/**/*.{js,jsx,ts,tsx,md,json}",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
     "@nrwl/cypress": "15.8.2",
+    "@nrwl/devkit": "15.8.2",
     "@nrwl/eslint-plugin-nx": "15.8.2",
     "@nrwl/js": "15.8.2",
     "@nrwl/linter": "15.8.2",
@@ -36,7 +37,7 @@
     "@storybook/react-webpack5": "^7.0.0-beta.43",
     "@svgr/webpack": "^6.1.2",
     "@testing-library/react": "14.0.0",
-    "@types/node": "18.14.2",
+    "@types/node": "latest",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/react-router-dom": "5.3.3",
