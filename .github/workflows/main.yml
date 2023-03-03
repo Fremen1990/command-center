@@ -1,9 +1,9 @@
 name: CI
+on: workflow_dispatch
 
 env:
   NODE_OPTIONS: --max-old-space-size=6144
 
-#on: workflow_dispatch
 
 #on:
 #  push:
