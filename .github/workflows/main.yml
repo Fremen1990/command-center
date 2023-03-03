@@ -1,8 +1,20 @@
-- name: Nrwl Nx - plugin
-  uses: MansaGroup/nrwl-nx-action@v3.2.2
+- name: Checkout
+  uses: actions/checkout@v3
   with:
-    targets: lint,test,build
-    all: 'true'
+    fetch-depth: 0
+
+- uses: mansagroup/nrwl-nx-action@v3
+  with:
+    targets: lint,build,deploy
+
+
+
+#- name: Nrwl Nx - plugin
+#  uses: MansaGroup/nrwl-nx-action@v3.2.2
+#  with:
+#    targets: lint,test,build
+#    all: 'true'
+
 #  with:
 #    targets: build
 #    projects: frontend,backend
