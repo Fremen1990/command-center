@@ -20,7 +20,8 @@ jobs:
               with:
                 fetch-depth: 0
             - uses: nrwl/nx-set-shas@v3
-
+              with:
+                sha: ${{ github.sha }}
 
             - name: Install dependencies
               run: npm ci
