@@ -1,6 +1,7 @@
 name: simple-workflow-example
 
-on: [push]
+#on: [push]
+on: workflow_dispatch
 
 
 #on:
